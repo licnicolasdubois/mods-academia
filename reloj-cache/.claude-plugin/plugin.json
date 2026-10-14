@@ -1,0 +1,21 @@
+{
+  "name": "reloj-cache",
+  "version": "0.1.0",
+  "description": "Muestra arriba del prompt cuántos minutos le quedan a la caché y cuántos tokens guarda, y avisa antes de que venza.",
+  "author": { "name": "Nicolás Dubois", "url": "https://licnicolasdubois.com" },
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "minutos": {
+      "type": "number",
+      "title": "Duración de la caché (minutos)",
+      "description": "Cuánto dura la caché después de cada respuesta. Depende de cómo uses Claude: puede ser 60 o 5.",
+      "default": 60
+    },
+    "aviso": {
+      "type": "number",
+      "title": "Avisar cuando falten (minutos)",
+      "description": "Cuántos minutos antes de que venza aparece el aviso.",
+      "default": 5
+    }
+  }
+}

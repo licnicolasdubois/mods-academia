@@ -1,0 +1,24 @@
+{
+  "name": "mods-academia",
+  "description": "Los mods de la clase «Mods de Claude Code» de la Academia de Nicolás Dubois: guardia, reloj de la caché y modo grabación.",
+  "owner": {
+    "name": "Nicolás Dubois"
+  },
+  "plugins": [
+    {
+      "name": "guardia",
+      "source": "./guardia",
+      "description": "No deja leer ni tocar archivos .env ni correr rm -rf."
+    },
+    {
+      "name": "reloj-cache",
+      "source": "./reloj-cache",
+      "description": "Muestra arriba del prompt cuánto le queda a la caché y avisa antes de que venza."
+    },
+    {
+      "name": "grabando",
+      "source": "./grabando",
+      "description": "/grabando tapa en pantalla mails, teléfonos y montos mientras grabás."
+    }
+  ]
+}

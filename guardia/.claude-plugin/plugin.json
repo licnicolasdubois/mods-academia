@@ -1,0 +1,9 @@
+{
+  "name": "guardia",
+  "version": "0.1.0",
+  "description": "No deja leer ni tocar archivos .env ni correr rm -rf. Si la guardia falla, frena igual.",
+  "author": {
+    "name": "Nicolás Dubois",
+    "url": "https://licnicolasdubois.com"
+  }
+}
