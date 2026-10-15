@@ -38,6 +38,8 @@ describe('grabando', () => {
     await $.session.start(START)
     const r = await $.command.run({ ...COMANDO, args: '' })
     expect(r.text).toContain('prendido')
+    // The model is told to answer in full: the screen does the hiding.
+    expect(r.context?.[0]).toContain('in full')
     for (const surface of ['terminal', 'desktop'] as const) {
       await $.ui.mount({ plugin: 'grabando', surface, ...MENSAJE })
       expect(visto.text).toBe('Tu mail es [mail oculto], tu celular [teléfono oculto] y el total [monto oculto]. Hoy es 2026-10-14.')

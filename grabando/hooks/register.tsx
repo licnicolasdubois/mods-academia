@@ -3,6 +3,12 @@ import type { Register } from 'claude-code'
 
 const isOn = atom({ plugin: 'grabando', key: 'isOn' } as const, false)
 
+// Without this note the model reads "recording mode on" and starts withholding the data itself,
+// so nothing gets masked on screen and the answer leaves out what the person asked for.
+const NOTA_AL_MODELO =
+  'Recording mode only masks what the screen shows; you still read the real values. ' +
+  'Answer as usual and write emails, phone numbers and amounts in full: the screen hides them.'
+
 const MAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g
 const MONTO = /(?:US\$|U\$S|USD|UYU|\$U|ARS|EUR|€|\$)\s?\d+(?:[.,]\d+)*|\b\d+(?:[.,]\d+)*\s?(?:USD|dólares|pesos|euros)\b/gi
 // 9 to 13 digits with optional + and separators; a date (2026-10-14, 14/10/2026) is left alone.
@@ -46,11 +52,9 @@ export const register: Register = on => {
     await update($, isOn, () => now)
     await $.store.set('isOn', now)
     $.ui.status(now ? 'modo grabación prendido' : undefined)
-    return {
-      text: now
-        ? 'Modo grabación prendido: en pantalla se tapan mails, teléfonos y montos.'
-        : 'Modo grabación apagado.',
-    }
+    return now
+      ? { text: 'Modo grabación prendido: en pantalla se tapan mails, teléfonos y montos.', context: [NOTA_AL_MODELO] }
+      : { text: 'Modo grabación apagado.' }
   })
 
   on('ui.render', { component: 'AssistantMessage' }, async ($, e, next) =>

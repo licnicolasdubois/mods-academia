@@ -1,6 +1,6 @@
 {
   "name": "grabando",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "/grabando prende y apaga el modo grabación: tapa en pantalla mails, teléfonos y montos. Lo que lee Claude no cambia.",
   "author": { "name": "Nicolás Dubois", "url": "https://licnicolasdubois.com" },
   "types": "./types/index.d.ts"
