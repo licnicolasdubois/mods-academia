@@ -61,7 +61,7 @@ describe('reloj-cache', () => {
     expect((await ui.find({ type: 'Text' }))?.text).toContain('quedan 5 min')
   })
 
-  test('sigue contando después de una recarga (sin session.start)', async ($, on) => {
+  test('sigue contando aunque no haya pasado por session.start', async ($, on) => {
     const clock = mock.clock(on)
     base(on)
     on('ui.toast', () => ({ value: undefined }))

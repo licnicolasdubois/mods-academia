@@ -8,8 +8,9 @@ const ultima = atom({ plugin: 'reloj-cache', key: 'ultima' } as const, null)
 const ahora = atom({ plugin: 'reloj-cache', key: 'ahora' } as const, 0)
 
 const TICK_MS = 30_000
-// A hot reload (an option changed in /config, a saved file) drops the timers and runs no
-// session.start again, so every event checks the clock is running. The variable resets with them.
+// A hot reload (an option changed in /config, a saved file) drops the timers. Every event checks
+// the clock is running, so the band never depends on one event to restart it. The variable resets
+// with the timers.
 let tictac: Timer | null = null
 
 const miles = (tokens: number) =>
